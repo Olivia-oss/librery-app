@@ -66,9 +66,67 @@
 }
 
 .ct-books {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 30px;
+  margin-top: 20px;
+  justify-content: center;
 }
 
-.ct-book img {
+.ct-book {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.ct-book-select {
+  background-color: #e3f6fa;
+  padding: 0 20px;
+  border-radius: 20px;
+}
+
+.ct-book-main {
+  width: 200px;
+  border-radius: 20px;
+  border: 2px solid #dadada;
+}
+
+.ct-book-main img {
   width: 200px;
   height: 250px;
+  border-radius: 20px 20px 0 0;
+}
+
+.ct-book-main h3 {
+  text-align: center;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 17px;
+  margin: 5px 30px 10px 30px;
+}
+
+.ct-book-main:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.ct-book-details {
+  margin: 0 20px;
+  width: 400px;
+}
+.ct-book-details label {
+  font-weight: bold;
+}
+
+.ct-book-details p {
+  text-align: justify;
+}
+
+.display-none {
+  display: none;
+}
+
+.border-radius {
+  border-radius: 20px !important;
 }

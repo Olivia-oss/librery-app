@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export const Categories = () => {
   return (
     <div className="ct-categories">
@@ -13,5 +15,5 @@ const Category = ({ name }) => {
 };
 
 Category.propTypes = {
-  name: String,
+  name: PropTypes.string.isRequired,
 };
