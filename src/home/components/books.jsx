@@ -1,59 +1,14 @@
-import { useEffect, useState } from "react";
-import { useBooks } from "../../hooks/useBook";
 import PropTypes from "prop-types";
 
-export const Books = () => {
-  const [idSelect, setIdSelect] = useState(-1);
-  const { books, gellAllBook, loading } = useBooks();
-
-  const handleBookSelect = (id) => {
-    if (id == idSelect) {
-      setIdSelect(-1);
-    } else {
-      setIdSelect(id);
-    }
-  };
-
-  useEffect(() => {
-    gellAllBook();
-  }, [gellAllBook]);
-
-  return (
-    <div>
-      {loading ? (
-        <div></div>
-      ) : (
-        <div className="ct-books">
-          {books.map((book) => {
-            return (
-              <Book
-                key={book.id}
-                id={book.id}
-                title={book.name}
-                description={book.description}
-                author={book.author}
-                year={book.year}
-                img={book.url_img}
-                onClick={handleBookSelect}
-                isSelect={idSelect == book.id}
-              />
-            );
-          })}
-        </div>
-      )}
-    </div>
-  );
-};
-
-const Book = ({
+export const Book = ({
   id,
   title,
   description,
   author,
   year,
   img,
-  onClick,
   isSelect,
+  onClick,
 }) => {
   return (
     <div
