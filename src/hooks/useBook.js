@@ -1,5 +1,9 @@
 import { useState, useCallback } from "react";
-import { getAllMoviesRequest, getBookByCategory } from "../api/books";
+import {
+  getAllMoviesRequest,
+  getBookByCategory,
+  getBookSearh,
+} from "../api/books";
 
 export const useBooks = () => {
   const [books, setBooks] = useState([]);
@@ -30,5 +34,18 @@ export const useBooks = () => {
     }
   };
 
-  return { books, loading, getAllBook: getAll, searhBookCategory };
+  const searhBook = async (searh) => {
+    try {
+      setLoading(true);
+      const data = await getBookSearh(searh);
+
+      setBooks(data);
+    } catch (error) {
+      throw "Error loading book " + error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { books, loading, getAllBook: getAll, searhBookCategory, searhBook };
 };

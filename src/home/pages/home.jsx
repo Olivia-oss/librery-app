@@ -8,7 +8,8 @@ import { Book } from "../components/books";
 
 export const Home = () => {
   const { getAllCategories, categories } = useCategories();
-  const { books, getAllBook, loading, searhBookCategory } = useBooks();
+  const { books, getAllBook, loading, searhBookCategory, searhBook } =
+    useBooks();
   const [idSelectBook, setIdSelectBook] = useState(-1);
   const [idSelectCategory, setIdSelectCategory] = useState(-1);
 
@@ -35,9 +36,16 @@ export const Home = () => {
     }
   };
 
+  const handleSearch = (search) => {
+    if (search != "") {
+      console.log("entrar");
+      searhBook(search);
+    }
+  };
+
   return (
     <div className="ct-home">
-      <Search />
+      <Search onClick={handleSearch} />
       <div className="ct-categories">
         {categories.map((category) => {
           return (
