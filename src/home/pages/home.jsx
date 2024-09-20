@@ -36,16 +36,9 @@ export const Home = () => {
     }
   };
 
-  const handleSearch = (search) => {
-    if (search != "") {
-      console.log("entrar");
-      searhBook(search);
-    }
-  };
-
   return (
     <div className="ct-home">
-      <Search onClick={handleSearch} />
+      <Search searhBook={searhBook} />
       <div className="ct-categories">
         {categories.map((category) => {
           return (

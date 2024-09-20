@@ -1,9 +1,36 @@
-html {
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.theme-light {
   color: #070707;
-  margin: 0 20px;
   background-color: #fff;
 }
 
-.title {
-  font-family: "Courier New", Courier, monospace;
+.theme-dark {
+  color: #fff;
+
+  background-color: #070707;
+}
+
+.theme-dark button {
+  background-color: #cee3f3;
+  color: #070707;
+}
+
+.theme-dark .ct-book-select {
+  background-color: #002d47;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 20px;
+}
+
+.icon-theme {
+  margin-top: 20px;
 }
