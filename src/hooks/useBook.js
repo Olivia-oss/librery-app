@@ -8,6 +8,7 @@ import {
 export const useBooks = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const getAll = useCallback(async () => {
     try {
       setLoading(true);
@@ -15,7 +16,9 @@ export const useBooks = () => {
 
       setBooks(data);
     } catch (error) {
-      throw "Error loading book " + error;
+      console.log("error");
+
+      setError(error);
     } finally {
       setLoading(false);
     }
@@ -28,7 +31,9 @@ export const useBooks = () => {
 
       setBooks(data);
     } catch (error) {
-      throw "Error loading book " + error;
+      console.log("error");
+
+      setError(error);
     } finally {
       setLoading(false);
     }
@@ -36,16 +41,26 @@ export const useBooks = () => {
 
   const searhBook = async (searh) => {
     try {
+      setError(false);
       setLoading(true);
       const data = await getBookSearh(searh);
 
       setBooks(data);
     } catch (error) {
-      throw "Error loading book " + error;
+      console.log("error");
+
+      setError(error);
     } finally {
       setLoading(false);
     }
   };
 
-  return { books, loading, getAllBook: getAll, searhBookCategory, searhBook };
+  return {
+    books,
+    loading,
+    getAllBook: getAll,
+    searhBookCategory,
+    searhBook,
+    error,
+  };
 };

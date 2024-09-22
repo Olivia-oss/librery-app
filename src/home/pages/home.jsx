@@ -5,10 +5,12 @@ import { useCategories } from "../../hooks/useCategories";
 import { Category } from "../components/category";
 import { useBooks } from "../../hooks/useBook";
 import { Book } from "../components/books";
+import Error from "../components/error";
+import NotResult from "../components/notResult";
 
 export const Home = () => {
   const { getAllCategories, categories } = useCategories();
-  const { books, getAllBook, loading, searhBookCategory, searhBook } =
+  const { books, getAllBook, loading, searhBookCategory, searhBook, error } =
     useBooks();
   const [idSelectBook, setIdSelectBook] = useState(-1);
   const [idSelectCategory, setIdSelectCategory] = useState(-1);
@@ -54,24 +56,32 @@ export const Home = () => {
       </div>
       <div>
         {loading ? (
-          <div></div>
+          <div>
+            <div className="loader"></div>
+          </div>
+        ) : error ? (
+          <Error />
         ) : (
           <div className="ct-books">
-            {books.map((book) => {
-              return (
-                <Book
-                  key={book.id}
-                  id={book.id}
-                  title={book.name}
-                  description={book.description}
-                  author={book.author}
-                  year={book.year}
-                  img={book.url_img}
-                  onClick={handleBookSelect}
-                  isSelect={idSelectBook == book.id}
-                />
-              );
-            })}
+            {books.length > 0 ? (
+              books.map((book) => {
+                return (
+                  <Book
+                    key={book.id}
+                    id={book.id}
+                    title={book.name}
+                    description={book.description}
+                    author={book.author}
+                    year={book.year}
+                    img={book.url_img}
+                    onClick={handleBookSelect}
+                    isSelect={idSelectBook == book.id}
+                  />
+                );
+              })
+            ) : (
+              <NotResult />
+            )}
           </div>
         )}
       </div>
