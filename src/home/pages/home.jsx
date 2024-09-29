@@ -41,6 +41,7 @@ export const Home = () => {
   return (
     <div className="ct-home">
       <Search searhBook={searhBook} />
+
       <div className="ct-categories">
         {categories.map((category) => {
           return (

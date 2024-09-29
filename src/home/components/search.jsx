@@ -26,8 +26,8 @@ export const Search = ({ searhBook }) => {
   };
   return (
     <div className="ct-search">
-      <input placeholder="Searh book" onChange={handleChange} />
-      <button onClick={() => handleSearch(searh)}>Searh</button>
+      <input placeholder="Buscar libro" onChange={handleChange} />
+      <button onClick={() => handleSearch(searh)}>Buscador</button>
     </div>
   );
 };
